@@ -1,7 +1,3 @@
-[submodule "Yousef-Eleshy/SchoolAppointment"]
-	path = Yousef-Eleshy/SchoolAppointment
-	url = git@github.com:Yousef-Eleshy/SchoolAppointment.git
-	branch = WebsiteAppointment
 
 [submodule "SMS2907"]
 	path = SMS2907
