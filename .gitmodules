@@ -2,3 +2,8 @@
 	path = Yousef-Eleshy/SchoolAppointment
 	url = git@github.com:Yousef-Eleshy/SchoolAppointment.git
 	branch = WebsiteAppointment
+
+[submodule "SMS0608"]
+	path = SMS0608
+	url = git@github.com:dinamohammed/schoolModules.git
+	branch = School2607
