@@ -4,3 +4,8 @@
 	url = git@github.com:dinamohammed/schoolModules.git
 	branch = School2607
 
+
+[submodule "SMS0608_2"]
+	path = SMS0608_2
+	url = git@github.com:dinamohammed/schoolModules.git
+	branch = School2607
