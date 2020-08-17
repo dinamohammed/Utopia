@@ -8,3 +8,8 @@
 	path = SMS1708
 	url = git@github.com:dinamohammed/schoolModules.git
 	branch = School2607
+
+[submodule "SMS1708_2"]
+	path = SMS1708_2
+	url = git@github.com:dinamohammed/schoolModules.git
+	branch = School2607
