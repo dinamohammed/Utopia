@@ -1,5 +1,5 @@
-
-[submodule "SMS1708"]
-	path = SMS1708
+[submodule "SMSM1708"]
+	path = SMSM1708
 	url = git@github.com:dinamohammed/schoolModules.git
 	branch = School2607
+
