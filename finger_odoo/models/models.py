@@ -5,7 +5,7 @@ from odoo import models, fields, api
 
 class HrEmployees(models.Model):
     _inherit = 'hr.employee'
-    device_id = fields.Char(string='Biometric Device ID')
+    device_id = fields.Char(string='Biometric User ID')
     @api.constrains('check_in', 'check_out', 'employee_id')
     def _check_validity(self):
         """ Verifies the validity of the attendance record compared to the others from the same employee.
