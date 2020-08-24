@@ -4,7 +4,7 @@
 
     <report id="reportqrcode_label_qweb"
         string="QR Code Report"
-        model="product.book"
+        model="product.product"
         report_type = "qweb-pdf"
         file="library.qrcode_label"
         name="library.qrcode_label"

@@ -29,15 +29,14 @@ class ProductLang(models.Model):
                          'The name of the language must be unique !')]
 
 
-class ProductBook(models.Model):
+class ProductProduct(models.Model):
     """Book variant of product"""
-    _name = "product.book"
     _inherit = "product.product"
 
     @api.model
     def default_get(self, fields):
         '''Overide method to get default category books'''
-        res = super(ProductBook, self).default_get(fields)
+        res = super(ProductProduct, self).default_get(fields)
         category = self.env['product.category'].search([('name', '=', 'Books')
                                                         ])
         res.update({'categ_id': category.id})
@@ -141,7 +140,7 @@ class ProductBook(models.Model):
         if default is None:
             default = {}
         default.update({'author_ids': []})
-        return super(ProductBook, self).copy(default)
+        return super(ProductProduct, self).copy(default)
 
     @api.model
     def create(self, vals):
