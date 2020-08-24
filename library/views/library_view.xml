@@ -109,8 +109,8 @@
     <menuitem id="menu_library_rack" name="Library Rack" parent="menu_library_config" action="action_library_rack" groups="school.group_school_administration,library.group_librarian,library.group_userian" />
     <!-- Form View Of Product Book -->
     <record id="view_product_book_form" model="ir.ui.view">
-        <field name="name">product.book.form.view</field>
-        <field name="model">product.book</field>
+        <field name="name">product.product.form.view</field>
+        <field name="model">product.product</field>
         <field name="priority" eval="1" />
         <field name="arch" type="xml">
             <form string="Books">
@@ -181,8 +181,8 @@
     </record>
     <!-- Tree View Of Product Book -->
     <record id="view_product_book_tree" model="ir.ui.view">
-        <field name="name">product.book.tree.view</field>
-        <field name="model">product.book</field>
+        <field name="name">product.product.tree.view</field>
+        <field name="model">product.product</field>
         <field name="priority" eval="1" />
         <field name="arch" type="xml">
             <tree string="Books">
@@ -199,7 +199,7 @@
     <!-- KanBan View Of Books -->
     <record id="books_kanban_view" model="ir.ui.view">
         <field name="name">Book Kanban View</field>
-        <field name="model">product.book</field>
+        <field name="model">product.product</field>
         <field name="arch" type="xml">
             <kanban>
                 <field name="name" />
@@ -213,7 +213,7 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
-                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('product.book', 'image_medium', record.id.raw_value)})" role="img" />
+                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('product.product', 'image_medium', record.id.raw_value)})" role="img" />
                             <div class="oe_kanban_details">
                                 <div class="o_kanban_record_top">
                                     <div class="o_kanban_record_headings">
@@ -267,7 +267,7 @@
     <!-- Action Of Product Book List -->
     <record id="action_product_book_list" model="ir.actions.act_window">
         <field name="name">Books</field>
-        <field name="res_model">product.book</field>
+        <field name="res_model">product.product</field>
         <field name="type">ir.actions.act_window</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="books_kanban_view"></field>
@@ -503,7 +503,7 @@
                 <templates>
                     <t t-name="kanban-box">
                         <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
-                            <div t-if="record.name" class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('product.book', 'image_medium', record.name.raw_value)})" role="img" />
+                            <div t-if="record.name" class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image: url(#{kanban_image('product.product', 'image_medium', record.name.raw_value)})" role="img" />
                             <!--                             <div t-if="record.student_id" class="o_kanban_image_fill_left d-none d-md-block" -->
                             <!--                                 t-attf-style="background-image: url(#{kanban_image('student.student', 'photo', record.student_id.raw_value)})" -->
                             <!--                                 role="img"/> -->
@@ -947,8 +947,8 @@
     -->
     <!-- Search View Of Product Book Search -->
     <record id="view_product_book_search" model="ir.ui.view">
-        <field name="name">product.book.search.view</field>
-        <field name="model">product.book</field>
+        <field name="name">product.product.search.view</field>
+        <field name="model">product.product</field>
         <field name="arch" type="xml">
             <search string="Assignment Information">
                 <filter name="book" string="Books" domain="[('categ_id.book_categ', '=', True)]" />
