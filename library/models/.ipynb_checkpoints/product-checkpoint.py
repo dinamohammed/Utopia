@@ -29,14 +29,15 @@ class ProductLang(models.Model):
                          'The name of the language must be unique !')]
 
 
-class ProductProduct(models.Model):
+class ProductBook(models.Model):
     """Book variant of product"""
+#     _name = "product.book"
     _inherit = "product.product"
 
     @api.model
     def default_get(self, fields):
         '''Overide method to get default category books'''
-        res = super(ProductProduct, self).default_get(fields)
+        res = super(ProductBook, self).default_get(fields)
         category = self.env['product.category'].search([('name', '=', 'Books')
                                                         ])
         res.update({'categ_id': category.id})
@@ -140,7 +141,7 @@ class ProductProduct(models.Model):
         if default is None:
             default = {}
         default.update({'author_ids': []})
-        return super(ProductProduct, self).copy(default)
+        return super(ProductBook, self).copy(default)
 
     @api.model
     def create(self, vals):
@@ -181,7 +182,7 @@ class ProductProduct(models.Model):
                     vals['seller_ids'] = [supplier]
                 else:
                     vals['seller_ids'].append(supplier)
-        return super(ProductProduct, self).create(vals)
+        return super(ProductBook, self).create(vals)
 
     @api.depends('qty_available')
     def _compute_books_available(self):
@@ -321,7 +322,7 @@ class LibraryAuthor(models.Model):
     _inherit = 'library.author'
 
     book_ids = fields.Many2many('product.product', 'author_book_rel',
-                                'author_id', 'product_id', 'Books')
+                                'author_id', 'book_id', 'Books')
 
 
 class BookEditor(models.Model):
@@ -344,4 +345,4 @@ class BookEditor(models.Model):
     state_id = fields.Many2one("res.country.state", "State")
     zip = fields.Char("Zip")
     country_id = fields.Many2one("res.country", "Country")
-    book_id = fields.Many2one("product.product", "Book Ref")
+    book_id = fields.Many2one("product.book", "Book Ref")

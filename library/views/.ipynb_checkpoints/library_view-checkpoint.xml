@@ -108,7 +108,7 @@
     <menuitem id="menu_library_config" name="Library" parent="school.menu_configuration" sequence="5" groups="library.group_librarian,group_userian" />
     <menuitem id="menu_library_rack" name="Library Rack" parent="menu_library_config" action="action_library_rack" groups="school.group_school_administration,library.group_librarian,library.group_userian" />
     <!-- Form View Of Product Book -->
-<!--     <record id="view_product_book_form" model="ir.ui.view">
+     <record id="view_product_book_form" model="ir.ui.view">
         <field name="name">product.product.form.view</field>
         <field name="model">product.product</field>
         <field name="priority" eval="1" />
@@ -180,7 +180,7 @@
         </field>
     </record> -->
     <!-- Tree View Of Product Book -->
-<!--     <record id="view_product_book_tree" model="ir.ui.view">
+    <record id="view_product_book_tree" model="ir.ui.view">
         <field name="name">product.product.tree.view</field>
         <field name="model">product.product</field>
         <field name="priority" eval="1" />
@@ -195,7 +195,7 @@
                 <field name="availability" />
             </tree>
         </field>
-    </record> -->
+    </record>
     <!-- KanBan View Of Books -->
     <record id="books_kanban_view" model="ir.ui.view">
         <field name="name">Book Kanban View</field>
@@ -277,12 +277,12 @@
     <menuitem id="menu_library_config" name="Library" parent="school.menu_configuration" sequence="5" />
     <menuitem id="menu_books_student" parent="menu_library" action="action_product_book_list" sequence="71" groups="school.group_school_administration,school.group_school_student,library.group_librarian,library.group_userian" />
     <!-- Action Of Form View Of View Book -->
-<!--     <record id="action_view_book" model="ir.actions.act_window.view">
+    <record id="action_view_book" model="ir.actions.act_window.view">
         <field name="sequence" eval="3" />
         <field name="view_mode">form</field>
         <field name="view_id" ref="view_product_book_form" />
         <field name="act_window_id" ref="action_product_book_list" />
-    </record> -->
+    </record>
     <!--  Action of Kanban View -->
     <record id="action_viewbook3_kanban" model="ir.actions.act_window.view">
         <field name="sequence" eval="1" />
@@ -1016,5 +1016,5 @@
             </field>
         </field>
     </record>
-    <report id="product.report_product_label" string="Products Labels" model="product.book" report_type="qweb-pdf" name="product.report_productlabel" file="product.report_productlabel" groups="library.group_librarian" />
+    <report id="product.report_product_label" string="Products Labels" model="product.product" report_type="qweb-pdf" name="product.report_productlabel" file="product.report_productlabel" groups="library.group_librarian" />
 </odoo>
