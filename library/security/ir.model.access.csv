@@ -8,7 +8,7 @@ access_library_book_issue_manager,library.book.issue,model_library_book_issue,li
 access_library_book_request_manager,library.book.request,model_library_book_request,library.group_librarian,1,1,1,1
 access_product_templete_manager,product.template,product.model_product_template,library.group_librarian,1,1,1,1
 access_book_attachment_manager,book.attachment,model_book_attachment,library.group_librarian,1,1,1,1
-access_product_book_manager,product.book,product.model_product_book,library.group_librarian,1,1,1,1
+access_product_product_manager,product.product,product.model_product_product,library.group_librarian,1,1,1,1
 access_stock_move_manager,stock.move,stock.model_stock_move,library.group_librarian,1,1,1,1
 access_stock_picking_manager,stock.picking,stock.model_stock_picking,library.group_librarian,1,1,1,1
 access_account_move_line_manager,account.move.line,account.model_account_move_line,library.group_librarian,1,1,1,1
@@ -28,7 +28,7 @@ access_library_book_issue_user,library.book.issue,model_library_book_issue,libra
 access_library_book_request_user,library.book.request,model_library_book_request,library.group_userian,1,1,1,0
 access_product_templete_user,product.template,product.model_product_template,library.group_userian,1,1,0,0
 access_book_attachment_user,book.attachment,model_book_attachment,library.group_userian,1,1,1,0
-access_product_book_user,product.book,product.model_product_book,library.group_userian,1,0,0,0
+access_product_product_user,product.product,product.model_product_product,library.group_userian,1,0,0,0
 access_stock_move_user,stock.move,stock.model_stock_move,library.group_userian,1,1,1,0
 access_stock_picking_user,stock.picking,stock.model_stock_picking,library.group_userian,1,1,1,0
 access_account_move_line_user,account.move.line,account.model_account_move_line,library.group_userian,1,0,0,0
@@ -47,4 +47,4 @@ access_library_book_issue_student,library.book.issue,model_library_book_issue,sc
 access_library_book_request_teacher,library.book.request,model_library_book_request,school.group_school_teacher,1,1,1,0
 access_library_card_teacher,library.card,model_library_card,school.group_school_teacher,1,0,0,0
 access_library_book_issue_teacher,library.book.issue,model_library_book_issue,school.group_school_teacher,1,0,0,0
-access_library_product_teacher,product.book,product.model_product_book,school.group_school_teacher,1,0,0,0
+access_library_product_teacher,product.product,product.model_product_product,school.group_school_teacher,1,0,0,0
