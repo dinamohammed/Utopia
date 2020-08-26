@@ -1,0 +1,66 @@
+        <record id="view_attendance_sheet_search" model="ir.ui.view">
+            <field name="name">attendance.sheet.search</field>
+            <field name="model">attendance.sheet</field>
+            <field name="arch" type="xml">
+                <search string="Monthly Attendance Sheet">
+                    <field name="standard_id"/>
+                    <group expand="1" string="Group By...">
+                        <filter name="class" string="Class" help="By Class" context="{'group_by':'standard_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <!-- Form View of student Leave Request -->
+        <record id="student_leave_req_form" model="ir.ui.view">
+            <field name="name">studentleave.request.form</field>
+            <field name="model">studentleave.request</field>
+            <field name="arch" type="xml">
+                <form string="Student Leave Request Form">
+                    <header>
+                        <button name="approve_state" type="object" string="Approve" groups="school.group_school_administration,school.group_school_teacher" attrs="{'invisible':[('state','in',['approve','reject','draft'])]}"/>
+                        <button name="draft_state" type="object" string="Send to Draft" attrs="{'invisible':[('state','in',['draft','approve','reject','toapprove'])]}"/>
+                        <button name="toapprove_state" string="To Approve" type="object" attrs="{'invisible':[('state','in',['approve','toapprove','reject'])]}"/>
+                        <button name="reject_state" type="object" string="Reject" attrs="{'invisible':[('state','in',['reject','approve'])]}" groups="school.group_school_administration,school.group_school_teacher"/>
+                        <field name="state" widget="statusbar" readonly="1" statusbar_visible="draft, toapprove"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Leave Details">
+                                <field name="name" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}"/>
+                                    <label for="days" class="oe_edit_only"/>
+                                    <div>
+                                        <div>
+                                            <field name="start_date" class="oe_inline" required="1" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}"/>
+                                            <span class="oe_grey"> - </span>
+                                            <field name="end_date" class="oe_inline" required="1" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}"/>
+                                        </div>
+                                       <div>
+                                         <field name="days" class="oe_inline" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}" readonly="1"/> days
+                                     </div>
+                                </div>
+                           </group>
+                          <group string="Student Information">
+                              <field name="student_id" domain="[('state','=','done')]" options="{&quot;no_create&quot;: True}" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}" context="{'student_id':True}"/>
+                                <field name="roll_no" readonly="1"/>
+                                <field name="standard_id" readonly="1"/>
+                         </group>
+                        </group>
+                        <group col="4" colspan="4" string="Teacher Information">
+                            <field name="teacher_id" options="{&quot;no_create&quot;: True}" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}" readonly="1"/>
+                            <field name="attachments" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}"/>
+                        </group>
+                        <group string="Reason">
+                            <field name="reason" required="1" attrs="{'readonly':[('state','in',['approve','reject','toapprove'])]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+             </field>
+        </record>
