@@ -196,7 +196,9 @@
             </tree>
         </field>
     </record>
-    
+   <!--     
+    this action to call action of product varient 
+     -->
     <record id="stock.stock_product_normal_action" model="ir.actions.act_window">
         <field name="name">Product Variants</field>
         <field name="type">ir.actions.act_window</field>
@@ -284,6 +286,7 @@
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="books_kanban_view"></field>
         <field name="context">{'search_default_book':1,'default_type':'product'}</field>
+        <field name="domain">[('categ_id.name','=','Books')]</field>
     </record>
     <!-- Menu Items Of Library Books -->
     <menuitem id="menu_library_config" name="Library" parent="school.menu_configuration" sequence="5" />
@@ -303,12 +306,12 @@
         <field name="act_window_id" ref="action_product_book_list" />
     </record>
     <!-- Action Of Tree View Of View Book -->
-<!--     <record id="action_view_book2" model="ir.actions.act_window.view">
+    <record id="action_view_book2" model="ir.actions.act_window.view">
         <field name="sequence" eval="2" />
         <field name="view_mode">tree</field>
         <field name="view_id" ref="view_product_book_tree" />
         <field name="act_window_id" ref="action_product_book_list" />
-    </record> -->
+    </record>
     <!-- Tree View Of Account Invoice -->
 <!--    <record id="invoice_tree" model="ir.ui.view">
         <field name="name">account.move.tree</field>
