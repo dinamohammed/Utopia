@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="barcode_inherit_view" inherit_id="product.report_simple_barcode">
+        <xpath expr="//div/table/tr[1]/th" position="replace">
+                <div> </div>
+        </xpath> 
+     </template>  
+</odoo>    
