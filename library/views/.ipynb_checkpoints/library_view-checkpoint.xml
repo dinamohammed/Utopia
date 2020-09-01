@@ -247,8 +247,7 @@
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
-                   <attribute name="context">{'search_view_ref':'product.product_search_form_view',
-                      'form_view_ref': 'product.product_normal_form_view' }</attribute> 
+                   <attribute name="context">{'form_view_ref': 'product.product_normal_form_view' }</attribute> 
                 </xpath>
             </field>
     </record>
