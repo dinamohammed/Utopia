@@ -143,46 +143,46 @@ class ProductBook(models.Model):
         default.update({'author_ids': []})
         return super(ProductBook, self).copy(default)
 
-    @api.model
-    def create(self, vals):
-        ''' This method is Create new student
-        @param self : Object Pointer
-        @param cr : Database Cursor
-        @param uid : Current Logged in User
-        @param vals : dictionary of new values to be set
-        @param context : standard Dictionary
-        @return :ID of newly created record.
-        '''
+#     @api.model
+#     def create(self, vals):
+#         ''' This method is Create new student
+#         @param self : Object Pointer
+#         @param cr : Database Cursor
+#         @param uid : Current Logged in User
+#         @param vals : dictionary of new values to be set
+#         @param context : standard Dictionary
+#         @return :ID of newly created record.
+#         '''
 
-        def _uniq(seq):
-            keys = {}
-            for e in seq:
-                keys[e] = 1
-            return keys.keys()
+#         def _uniq(seq):
+#             keys = {}
+#             for e in seq:
+#                 keys[e] = 1
+#             return keys.keys()
 
-        # add link from editor to supplier:
-        if 'editor' in vals:
-            editor_id = vals['editor']
-            supplier_model = self.env['library.editor.supplier']
-            domain = [('name', '=', editor_id)]
-            supplier_ids = [idn.id for idn
-                            in supplier_model.search(domain)
-                            if idn.id > 0]
-            suppliers = supplier_model.browse(supplier_ids)
-            for obj in suppliers:
-                supplier = [0, 0,
-                            {'pricelist_ids': [],
-                             'name': obj.supplier_id.id,
-                             'sequence': obj.sequence,
-                             'qty': 0,
-                             'delay': 1,
-                             'product_code': False,
-                             'product_name': False}]
-                if 'seller_ids' not in vals:
-                    vals['seller_ids'] = [supplier]
-                else:
-                    vals['seller_ids'].append(supplier)
-        return super(ProductBook, self).create(vals)
+#         # add link from editor to supplier:
+#         if 'editor' in vals:
+#             editor_id = vals['editor']
+#             supplier_model = self.env['library.editor.supplier']
+#             domain = [('name', '=', editor_id)]
+#             supplier_ids = [idn.id for idn
+#                             in supplier_model.search(domain)
+#                             if idn.id > 0]
+#             suppliers = supplier_model.browse(supplier_ids)
+#             for obj in suppliers:
+#                 supplier = [0, 0,
+#                             {'pricelist_ids': [],
+#                              'name': obj.supplier_id.id,
+#                              'sequence': obj.sequence,
+#                              'qty': 0,
+#                              'delay': 1,
+#                              'product_code': False,
+#                              'product_name': False}]
+#                 if 'seller_ids' not in vals:
+#                     vals['seller_ids'] = [supplier]
+#                 else:
+#                     vals['seller_ids'].append(supplier)
+#         return super(ProductBook, self).create(vals)
 
     @api.depends('qty_available')
     def _compute_books_available(self):

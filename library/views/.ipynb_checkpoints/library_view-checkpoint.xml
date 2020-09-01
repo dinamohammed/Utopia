@@ -197,7 +197,7 @@
         </field>
     </record>
    <!--     
-    this action to call action of product varient 
+    this action to call action of product varient in invenroty
      -->
     <record id="stock.stock_product_normal_action" model="ir.actions.act_window">
         <field name="name">Product Variants</field>
@@ -210,6 +210,67 @@
         <field name="search_view_id" ref="stock.stock_product_search_form_view"/>
     </record>
     
+       <!--     
+    this action to call action of product varient in Sales
+     -->
+     <record id="product.product_normal_action_sell" model="ir.actions.act_window">
+        <field name="name">Product Variants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form,kanban,activity</field>
+       <field name="view_ids" eval="[(5, 0, 0),
+          (0, 0, {'view_mode': 'tree', 'view_id': ref('product.product_product_tree_view')}),
+          (0, 0, {'view_mode': 'form', 'view_id': ref('product.product_normal_form_view')})]"/>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+    </record>
+          <!--     
+    this action to call action of product varient in Purchase
+     -->
+     <record id="purchase.product_product_action" model="ir.actions.act_window">
+        <field name="name">Product Variants</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">tree,form,kanban,activity</field>
+        <field name="target">current</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+          (0, 0, {'view_mode': 'tree', 'view_id': ref('product.product_product_tree_view')}),
+          (0, 0, {'view_mode': 'form', 'view_id': ref('product.product_normal_form_view')})]"/>
+        <field name="search_view_id" ref="product.product_search_form_view"/>
+    </record>
+    
+<!--     inherit form purchase for update create and edit to call product from action
+     -->
+     <record  id="purchase_order_form_inherit_product" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit.product</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
+                   <attribute name="context">{'search_view_ref':'product.product_search_form_view',
+                      'form_view_ref': 'product.product_normal_form_view' }</attribute> 
+                </xpath>
+            </field>
+    </record>
+<!--     inherit form sale for update create and edit to call product from action
+     -->
+        <record  id="sale_order_form_inherit_product" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.product</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page/field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
+                   <attribute name="context">{'form_view_ref': 'product.product_normal_form_view' }</attribute> 
+                </xpath>
+            </field>
+    </record>
+    
+    <!-- 
+    {'form_view_ref': 'product.product_normal_form_view',
+                       'search_view_ref':'product.product_search_form_view'}
+    
+     -->
     <!-- KanBan View Of Books -->
     <record id="books_kanban_view" model="ir.ui.view">
         <field name="name">Book Kanban View</field>
